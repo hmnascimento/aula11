@@ -29,9 +29,21 @@ public class Main {
     public static void main(String[] args) {
         //declara variaveis
         Scanner scanner;
+        Scanner scannerReservas;
         Sala[] salas = new Sala[ 100 ];
+        Reserva[] reservas = new Reserva[ 200 ];
         int num_salas = 0;
+        int num_reservas = 0;
         int i;
+        String output= "";
+
+
+
+        /**
+         *********************************************
+         ************ salas.txt **********************
+         *********************************************
+         */
 
         //le os dados do ficheiro salas.txt. guarda na variavel scanner.
         try	{
@@ -59,8 +71,7 @@ public class Main {
             num_salas++;
         }
 
-        //output para ecra de salas.txt
-
+        //output de salas.txt para ecra
         for( i = 0;  i < num_salas;  i++ )
         {
             System.out.print  ( "L" + i + ":\t") ;
@@ -75,28 +86,83 @@ public class Main {
         }
 
         //usamos isto para gerar a variavel que vai para o ficheiro
-            String linhaCompleta= "";
-            // / linhaCompleta = linhaCompleta + "* ID: " + salas[i].idSala + " " ;
+        // / output = output+ "* ID: " + salas[i].idSala + " " ;
+
+        System.out.println("fim de salas.txt. agora começa o reservas.txt");
+
+        /**
+         *********************************************
+         ************ reservas.txt *******************
+         *********************************************
+         */
 
 
+        //le os dados do ficheiro reservas.txt. guarda na variavel scanner_reservas.
+        try	{
+            scannerReservas = new Scanner( new File("reservas.txt") ).useDelimiter( "\\s*:\\s*|\\s*\n\\s*" );
+        }
+        catch( FileNotFoundException ex )
+        {
+            System.out.println( ex );
+            return;
+        }
 
+        scannerReservas.skip( "\\s*" );
 
-        System.out.println(linhaCompleta);
+        // separa o conteudo da variavel scanner em arrays diferentes.
+        for( i = 0;  scannerReservas.hasNextLine();  i++ )
+        {
+            System.out.println("i:" + i);  // troubleshooting
+            reservas[i] = new Reserva();
+            reservas[i].idSala = scannerReservas.nextInt();
+            reservas[i].nomeEspetaculo = scannerReservas.next();
+            reservas[i].condicao = scannerReservas.next();
+            reservas[i].fila = scannerReservas.nextInt();
+            reservas[i].lugar = scannerReservas.nextInt();
+            reservas[i].dia = scannerReservas.nextInt();
+            reservas[i].mes = scannerReservas.nextInt();
+            reservas[i].sessao = scannerReservas.next();
+            scannerReservas.skip( "\\s*" );
+            num_reservas++;
+        }
+        //troubleshooting
+        System.out.println("nr reservas:" + num_reservas);
+
+        //output de salas.txt para ecra
+        for( i = 0;  i < num_reservas;  i++ )
+        {
+            System.out.print  ( "L" + i + ":\t") ;
+            System.out.print  ( "C1:" + reservas[i].idSala          + "\t");
+            System.out.print  ( "C2:" + reservas[i].nomeEspetaculo  + "\t");
+            System.out.print  ( "C3:" + reservas[i].condicao        + "\t");
+            System.out.print  ( "C4:" + reservas[i].fila            + "\t");
+            System.out.print  ( "C5:" + reservas[i].lugar           + "\t");
+            System.out.print  ( "C6:" + reservas[i].dia             + "\t");
+            System.out.print  ( "C7:" + reservas[i].mes             + "\t");
+            System.out.println( "C8:" + reservas[i].sessao          + "\t");
+        }
+
+        //usamos isto para gerar a variavel que vai para o ficheiro
+        // / output = output+ "* ID: " + salas[i].idSala + " " ;
+
+        /**
+         *********************************************
+         ************ output.txt *********************
+         *********************************************
+         */
+        System.out.println(output);
 
         // escreve o ficheiro output.txt  . from: aula11
         Writer writer = null;
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("output.txt"), "utf-8"));
-            writer.write(linhaCompleta);
+            writer.write(output);
         } catch (IOException ex) {
             // report
         } finally {
             try {writer.close();} catch (Exception ex) {/*ignore*/}
         }
-
-
     }
-
 }
 
