@@ -97,6 +97,7 @@ public class Main {
          */
 
 
+
         //le os dados do ficheiro reservas.txt. guarda na variavel scanner_reservas.
         try	{
             scannerReservas = new Scanner( new File("reservas.txt") ).useDelimiter( "\\s*:\\s*|\\s*\n\\s*" );
