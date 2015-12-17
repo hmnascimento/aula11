@@ -24,7 +24,6 @@ class Reserva {
 }
 
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -60,8 +59,8 @@ public class Main {
             num_salas++;
         }
 
-        //output para ecra de todos os dados
-        String linhaCompleta= "";
+        //output para ecra de salas.txt
+
         for( i = 0;  i < num_salas;  i++ )
         {
             System.out.print  ( "L" + i + ":\t") ;
@@ -72,9 +71,14 @@ public class Main {
             System.out.print  ( "C5:" +salas[i].nomeEspetaculo+ "\t");
             System.out.println( "C6:" +salas[i].precoBilhete +  "\t");
 
-            // / linhaCompleta = linhaCompleta + "* ID: " + salas[i].idSala + " " ;
 
         }
+
+        //usamos isto para gerar a variavel que vai para o ficheiro
+            String linhaCompleta= "";
+            // / linhaCompleta = linhaCompleta + "* ID: " + salas[i].idSala + " " ;
+
+
 
 
         System.out.println(linhaCompleta);
