@@ -25,8 +25,6 @@ class Reserva {
 
 
 
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -46,29 +44,36 @@ public class Main {
             return;
         }
 
-
-
-
         scanner.skip( "\\s*" );
 
-        // separa o conteudo da var scanner em arrays diferentes.
+        // separa o conteudo da variavel scanner em arrays diferentes.
         for( i = 0;  scanner.hasNextLine();  i++ )
         {
             salas[i] = new Sala();
             salas[i].idSala = scanner.nextInt();
             salas[i].nomeSala = scanner.next();
             salas[i].filas = scanner.nextInt();
+            salas[i].lugares = scanner.nextInt();
+            salas[i].nomeEspetaculo = scanner.next();
+            salas[i].precoBilhete = scanner.nextInt();
             scanner.skip( "\\s*" );
             num_salas++;
         }
 
+        //output para ecra de todos os dados
         String linhaCompleta= "";
         for( i = 0;  i < num_salas;  i++ )
         {
-            System.out.print  (   "ID: "          + salas[i].idSala);
-            System.out.print  ( "  Nome: "        + salas[i].nomeSala);
-            System.out.println( "  Experiencia: " + salas[i].filas);
-            linhaCompleta = linhaCompleta + "* ID: " + salas[i].idSala + " " ;
+            System.out.print  ( "L" + i + ":\t") ;
+            System.out.print  ( "C1:" + salas[i].idSala +       "\t");
+            System.out.print  ( "C2:" +salas[i].nomeSala +      "\t");
+            System.out.print  ( "C3:" +salas[i].filas +         "\t");
+            System.out.print  ( "C4:" +salas[i].lugares +       "\t");
+            System.out.print  ( "C5:" +salas[i].nomeEspetaculo+ "\t");
+            System.out.println( "C6:" +salas[i].precoBilhete +  "\t");
+
+            // / linhaCompleta = linhaCompleta + "* ID: " + salas[i].idSala + " " ;
+
         }
 
 
