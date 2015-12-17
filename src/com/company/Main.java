@@ -34,6 +34,7 @@ public class Main {
 
 
 
+
         scanner.skip( "\\s*" );
 
         // separa o conteudo da var scanner em arrays diferentes.
