@@ -5,13 +5,27 @@ import java.io.*;
 import java.util.Scanner;
 
 class Sala {
-    public int salaId;                  //coluna1
-    public String salaNome;             //coluna2
-    public int salaNrFilas;             //coluna3
-    public int salaNrLugares;           //coluna4
-    public String salaNomeEspetaculo;   //coluna5
-    public int salaPrecoBilhete;        //coluna6
+    public int idSala;                  //coluna1
+    public String nomeSala;             //coluna2
+    public int filas;                   //coluna3
+    public int lugares;                 //coluna4
+    public String nomeEspetaculo;       //coluna5
+    public int precoBilhete;            //coluna6
 }
+class Reserva {
+    public int idSala;                  //coluna1
+    public String nomeEspetaculo;       //coluna2
+    public String condicao;             //coluna3
+    public int fila;                    //coluna4
+    public int lugar;                   //coluna5
+    public int dia;                     //coluna6
+    public int mes;                     //coluna7
+    public String sessao;               //coluna8
+}
+
+
+
+
 
 public class Main {
 
@@ -41,9 +55,9 @@ public class Main {
         for( i = 0;  scanner.hasNextLine();  i++ )
         {
             salas[i] = new Sala();
-            salas[i].salaId = scanner.nextInt();
-            salas[i].salaNome = scanner.next();
-            salas[i].salaNrFilas = scanner.nextInt();
+            salas[i].idSala = scanner.nextInt();
+            salas[i].nomeSala = scanner.next();
+            salas[i].filas = scanner.nextInt();
             scanner.skip( "\\s*" );
             num_salas++;
         }
@@ -51,10 +65,10 @@ public class Main {
         String linhaCompleta= "";
         for( i = 0;  i < num_salas;  i++ )
         {
-            System.out.print  (   "ID: "          + salas[i].salaId);
-            System.out.print  ( "  Nome: "        + salas[i].salaNome);
-            System.out.println( "  Experiencia: " + salas[i].salaNrFilas);
-            linhaCompleta = linhaCompleta + "* ID: " + salas[i].salaId + " " ;
+            System.out.print  (   "ID: "          + salas[i].idSala);
+            System.out.print  ( "  Nome: "        + salas[i].nomeSala);
+            System.out.println( "  Experiencia: " + salas[i].filas);
+            linhaCompleta = linhaCompleta + "* ID: " + salas[i].idSala + " " ;
         }
 
 
